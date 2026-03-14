@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor
+    </title>
+</head>
+<body>
+    <script>
+const humanChoice = prompt("Enter rock, paper or scissors").toLowerCase();
+
+const random = Math.random();
+let compChoice;
+
+if (random < 0.33) {
+    compChoice = "rock";
+} 
+else if (random < 0.66) {
+    compChoice = "paper";
+} 
+else {
+    compChoice = "scissors";
+}
+
+console.log("Computer chose:", compChoice);
+
+let score = 0;
+
+if (humanChoice === compChoice) {
+    console.log("Draw");
+}
+else if (
+    (humanChoice === "rock" && compChoice === "scissors") ||
+    (humanChoice === "paper" && compChoice === "rock") ||
+    (humanChoice === "scissors" && compChoice === "paper")
+) {
+    console.log("You Win");
+    score++;
+}
+else {
+    console.log("Computer Wins");
+}
+
+console.log("Final Score:", score);
+    </script>
+</body>
+</html>
