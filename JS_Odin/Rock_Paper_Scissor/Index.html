@@ -1,58 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rock Paper Scissor</title>
-  </head>
-  <body>
-    <script>
-      let i = 0;
-      let score = 0;
-      const getHumanChoice = () => {
-        const humanChoice = prompt(
-          "Enter rock, paper or scissors",
-        ).toLowerCase();
-        return humanChoice;
-      };
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+  <h1 class="title">Rock Paper Scissors</h1>
+</header>
 
-      const getCompChoice = () => {
-        const random = Math.random();
-        let compChoice;
+  <div class="game main">
+    <div class="status">
+      <h2 id="status-h2">Choose your weapon.</h2>
+      <h3 id="status-msg">First to score 5 points wins the game</h3>
+    </div>
+    <div class="score-modal">
+      <div class="score-box">
+        <div class="player-sign score-box-sign">
+          ?
+        </div>
+        <p id="player-score" class="score-info">Player: 0</p>
+      </div>
+      <div class="score-box">
+        <div class="comp-sign score-box-sign">
+          ?
+        </div>
+        <p id="comp-score"class="score-info">Computer: 0</p>
+      </div>
+    </div>
+    <div class="btns">
+      <button class="btn" id="Rock-btn">
+        <div class="sign">✊</div>
+      </button>
+      <button class="btn" id="Paper-btn">
+        <div class="sign">✋</div>
+      </button>
+      <button class="btn" id="scissors-btn">
+        <div class="sign">✌</div>
+      </button>
+    </div>
+  </div>
+  <footer class="footer">
+      <p>
+        Copyright ©
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        Kunal
+      </p>
+      <a href="https://github.com/k7n4l" target="_blank">
+        <img class="github-logo" src="github-mark.svg" />
+      </a>
+    </footer>
 
-        if (random < 0.33) {
-          compChoice = "rock";
-        } else if (random < 0.66) {
-          compChoice = "paper";
-        } else {
-          compChoice = "scissors";
-        }
-        return compChoice;
-      };
+    <div id="endgame-modal" class="modal">
+      <h3 id="endgame-msg"></h3>
+      <button id="restart-btn">Play Again</button>
+    </div>
+    <div class="overlay" id="overlay"></div>
 
-      function playRounds(humanChoice, compChoice) {
-        console.log("Computer chose:", compChoice);
-
-        if (humanChoice === compChoice) {
-          console.log("Draw");
-        } else if (
-          (humanChoice === "rock" && compChoice === "scissors") ||
-          (humanChoice === "paper" && compChoice === "rock") ||
-          (humanChoice === "scissors" && compChoice === "paper")
-        ) {
-          console.log("You Win");
-          score++;
-        } else {
-          console.log("Computer Wins");
-        }
-        console.log("Score:", score);
-      }
-      while (i < 5) {
-        const human = getHumanChoice();
-        const comp = getCompChoice();
-        playRounds(human, comp);
-        i++;
-      }
-    </script>
-  </body>
+    <script src="script.js"></script>
+</body>
 </html>
