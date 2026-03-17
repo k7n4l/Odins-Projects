@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etch A Sketch</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <h1>Etch A Sketch</h1>
+      <input type="number" id="size" placeholder="Enter n" />
+      <input type="color" id="colorPicker" value="#000000">
+      <button onclick="createGrid()">Create Grid</button>
+      <div id="container"></div>
+    </div>
+
+    <script>
+      function createGrid() {
+        const n = Number(document.getElementById("size").value);
+        const container = document.getElementById("container");
+        const colorPicker = document.getElementById("colorPicker");
+
+        container.innerHTML = "";
+
+        const containerSize = 400;
+        const contSize = containerSize / n;
+        
+        let isDrawing = false;
+        
+                document.addEventListener("mousedown", () => {
+                  isDrawing = true;
+                });
+        
+                document.addEventListener("mouseup", () => {
+                  isDrawing = false;
+                });
+                for (let i = 0; i < n * n; i++) {
+                  const box = document.createElement("div");
+                  box.className = "box";
+                  box.style.width = contSize + "px";
+                  box.style.height = contSize + "px";
+                  container.appendChild(box);
+        
+                  box.addEventListener("mouseover", () => {
+                    if (isDrawing) {
+                      box.style.backgroundColor = colorPicker.value;
+                    }
+                  });
+                }
+              }
+
+    </script>
+  </body>
+</html>
